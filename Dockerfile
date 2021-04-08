@@ -26,6 +26,17 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD38578
      zlib1g \
      uuid-runtime \
      nano \
+     # required for ldap-python / openldap compiling \
+     python3-dev \
+     python2.7-dev \
+     libldap2-dev \
+     libsasl2-dev \
+     ldap-utils \
+     python-tox \
+     lcov \
+     python-six \
+     python-setuptools \
+     # above for ldap-python \
    && apt-get clean \
    && rm -rf /var/lib/apt/lists/*
 
