@@ -1,4 +1,4 @@
-FROM telosalliance/ubuntu-18.04
+FROM telosalliance/ubuntu-18.04:2020.01
 
 ENV DOTNET_SDK_VERSION 2.1.805
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD385783 \
