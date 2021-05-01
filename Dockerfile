@@ -67,3 +67,5 @@ RUN powershell_version=7.0.0 \
     # To reduce image size, remove the copy nupkg that nuget keeps.
     && find /usr/share/powershell -print | grep -i '.*[.]nupkg$' | xargs rm
 
+RUN npm install -g npm@7.7.6
+
