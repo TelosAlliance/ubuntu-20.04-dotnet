@@ -69,7 +69,7 @@ RUN powershell_version=7.1.4 \
     && rm PowerShell.Linux.x64.$powershell_version.nupkg \
     && ln -s /usr/share/powershell/pwsh /usr/bin/pwsh \
     && chmod 755 /usr/share/powershell/pwsh \
-#     # To reduce image size, remove the copy nupkg that nuget keeps.
+    # To reduce image size, remove the copy nupkg that nuget keeps.
     && find /usr/share/powershell -print | grep -i '.*[.]nupkg$' | xargs rm
 
 RUN npm install -g npm@7.7.6
