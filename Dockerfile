@@ -1,4 +1,4 @@
-FROM telosalliance/ubuntu-20.04:rust-1.54
+FROM telosalliance/ubuntu-20.04:2021-10-08
 
 ENV \
     # Unset ASPNETCORE_URLS from aspnet base image
