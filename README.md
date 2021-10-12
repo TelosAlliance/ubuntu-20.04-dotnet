@@ -18,3 +18,4 @@ Make sure you have `docker` installed, and you are part of the `docker` group. R
 See https://hub.docker.com/r/telosalliance/ubuntu-20.04
 
 This image extends the image above with additional tools for dotnet core compilation and a few other specifics needed by projects building images/applications that use dotnet core.
+
