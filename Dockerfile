@@ -1,4 +1,4 @@
-FROM telosalliance/ubuntu-18.04:2020.01
+FROM telosalliance/ubuntu-20.04:2021-10-08
 
 ENV DOTNET_SDK_VERSION 2.1.805
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD385783 \
@@ -7,11 +7,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD38578
    && apt-get install -y --no-install-recommends \
      libguestfs-tools \
      extlinux \
+     fakeroot \
      libelf-dev \
      libc6 \
      libgcc1 \
      libgssapi-krb5-2 \
-     libicu60 \
+     libicu66 \
      liblttng-ust0 \
      libssl1.0.0 \
      libstdc++6 \
