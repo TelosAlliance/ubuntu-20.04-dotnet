@@ -14,7 +14,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD38578
      libgssapi-krb5-2 \
      libicu66 \
      liblttng-ust0 \
-     libssl1.0.0 \
+     libssl1.1 \
      libstdc++6 \
      zlib1g \
      uuid-runtime \
