@@ -73,5 +73,5 @@ RUN powershell_version=7.2.7 \
     # To reduce image size, remove the copy nupkg that nuget keeps.
     && find /usr/share/powershell -print | grep -i '.*[.]nupkg$' | xargs rm
 
-RUN npm install -g npm@7.24.1
+RUN npm install -g npm@8.19.2
 
