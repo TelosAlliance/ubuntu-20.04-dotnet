@@ -1,4 +1,4 @@
-FROM telosalliance/ubuntu-20.04:2021-10-08
+FROM telosalliance/ubuntu-20.04:2024-03-19
 
 ENV \
     # Unset ASPNETCORE_URLS from aspnet base image
@@ -74,4 +74,3 @@ RUN powershell_version=7.2.7 \
     && find /usr/share/powershell -print | grep -i '.*[.]nupkg$' | xargs rm
 
 RUN npm install -g npm@8.19.2
-
