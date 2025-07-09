@@ -16,7 +16,8 @@ ENV \
     # PowerShell telemetry for docker image usage
     POWERSHELL_DISTRIBUTION_CHANNEL=PSDocker-DotnetCoreSDK-Ubuntu-20.04
 
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD385783 \
+RUN curl -sSL https://apt.kitware.com/keys/kitware-archive-latest.asc | apt-key add - \
+   && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD385783 \
    && apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 684BA42D \
    && apt-get update \
    && apt-get install -y --no-install-recommends \
@@ -44,6 +45,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 291F9FF6FD38578
      lcov \
      python-six \
      python-setuptools \
+     grub-pc-bin \
+     xorriso \
+     grub-efi-amd64-bin \
      # above for ldap-python \
    && apt-get clean \
    && rm -rf /var/lib/apt/lists/*
@@ -60,17 +64,17 @@ RUN curl -fSL --output dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/
     && dotnet help
 
 # Install PowerShell global tool
-RUN powershell_version=7.2.7 \
-    && curl -fSL --output PowerShell.Linux.x64.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.x64.$powershell_version.nupkg \
-    && powershell_sha512='465db0b02507d8c055a0ef9ae4e43395a9897b632660a0d1c07788159d13b9cc54d44823123ea001bbe3ad97740b0e5f998cb3378c84ba8824bc233559f32288' \
-    && echo "$powershell_sha512  PowerShell.Linux.x64.$powershell_version.nupkg" | sha512sum -c - \
-    && mkdir -p /usr/share/powershell \
-    && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.x64 \
-    && dotnet nuget locals all --clear \
-    && rm PowerShell.Linux.x64.$powershell_version.nupkg \
-    && ln -s /usr/share/powershell/pwsh /usr/bin/pwsh \
-    && chmod 755 /usr/share/powershell/pwsh \
-    # To reduce image size, remove the copy nupkg that nuget keeps.
-    && find /usr/share/powershell -print | grep -i '.*[.]nupkg$' | xargs rm
+#RUN powershell_version=7.2.7 \
+#    && curl -fSL --output PowerShell.Linux.x64.$powershell_version.nupkg https://pwshtool.blob.core.windows.net/tool/$powershell_version/PowerShell.Linux.x64.$powershell_version.nupkg \
+#    && powershell_sha512='465db0b02507d8c055a0ef9ae4e43395a9897b632660a0d1c07788159d13b9cc54d44823123ea001bbe3ad97740b0e5f998cb3378c84ba8824bc233559f32288' \
+#    && echo "$powershell_sha512  PowerShell.Linux.x64.$powershell_version.nupkg" | sha512sum -c - \
+#    && mkdir -p /usr/share/powershell \
+#    && dotnet tool install --add-source / --tool-path /usr/share/powershell --version $powershell_version PowerShell.Linux.x64 \
+#    && dotnet nuget locals all --clear \
+#    && rm PowerShell.Linux.x64.$powershell_version.nupkg \
+#    && ln -s /usr/share/powershell/pwsh /usr/bin/pwsh \
+#    && chmod 755 /usr/share/powershell/pwsh \
+#    # To reduce image size, remove the copy nupkg that nuget keeps.
+#    && find /usr/share/powershell -print | grep -i '.*[.]nupkg$' | xargs rm
 
 RUN npm install -g npm@8.19.2
